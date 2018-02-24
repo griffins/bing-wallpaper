@@ -1,7 +1,6 @@
 #!/usr/bin/env python 
 
 import requests
-import time
 import os
 from subprocess import call
 
@@ -25,7 +24,7 @@ def get(route,stream=False):
     print(url)
     return  requests.get(url,stream=stream)
 
-junk = get('/HPImageArchive.aspx?format=js&n=1&nc=%s' % (time.time()))
+junk = get('/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US'
 
 path = '%s/wallpaper.jpg' % (create_cache_dir())
 print("Saving wallpaper: " + download_file(path,"%s" % (junk.json()['images'][0]['url'])))
