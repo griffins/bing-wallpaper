@@ -24,9 +24,10 @@ def get(route,stream=False):
     print(url)
     return  requests.get(url,stream=stream)
 
-junk = get('/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US'
+junk = get('/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=en-US')
 
-path = '%s/wallpaper.jpg' % (create_cache_dir())
+path =  '%s/wallpaper.jpg' %  (create_cache_dir())
+
 print("Saving wallpaper: " + download_file(path,"%s" % (junk.json()['images'][0]['url'])))
 
 call(['gsettings' ,'set', 'org.gnome.desktop.background', 'picture-uri', ('file://%s'  % (path))])
